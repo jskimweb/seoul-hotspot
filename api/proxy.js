@@ -4,7 +4,7 @@ const proxy = createProxyMiddleware({
   target: "http://openapi.seoul.go.kr:8088",
   changeOrigin: true,
   pathRewrite: {
-    "^/api": "",
+    "^/seoul-api": "",
   },
 });
 
