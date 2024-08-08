@@ -8,7 +8,9 @@ function App() {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://openapi.seoul.go.kr:8088/${import.meta.env.VITE_SEOUL_API_KEY}/json/citydata_ppltn/1/2/신림역`
+        `/seoul-api/${
+          import.meta.env.VITE_SEOUL_API_KEY
+        }/json/citydata_ppltn/1/2/신림역`
       );
       const data: Response = await response.json();
 

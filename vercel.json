@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/seoul-api/(.*)",
+      "destination": "/api/proxy.js"
+    }
+  ]
+}
