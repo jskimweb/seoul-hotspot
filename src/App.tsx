@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { Data, Response, NormalResponse } from "./types";
+import Map from "./components/Map";
 
 function App() {
   const [data, setData] = useState<Data | undefined>();
@@ -35,6 +36,7 @@ function App() {
         동대문 관광특구
       </button>
       <p>{data ? data.AREA_CONGEST_MSG : ""}</p>
+      <Map />
     </>
   );
 }
