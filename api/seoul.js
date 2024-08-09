@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   try {
     const apiUrl = `http://openapi.seoul.go.kr:8088/${
-      process.env.VITE_SEOUL_API_KEY
+      process.env.SEOUL_API_KEY
     }/json/citydata_ppltn/1/2/${encodeURIComponent(location)}`;
     const response = await axios.get(apiUrl);
 

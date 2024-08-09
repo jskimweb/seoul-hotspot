@@ -8,7 +8,7 @@ function App() {
   const fetchData = async (location: string) => {
     try {
       const response = await fetch(
-        `/api/proxy?location=${encodeURIComponent(location)}`
+        `/api/seoul?location=${encodeURIComponent(location)}`
       );
       const data: Response = await response.json();
 
