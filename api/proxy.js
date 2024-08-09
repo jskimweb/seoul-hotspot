@@ -1,17 +1,21 @@
-import { createProxyMiddleware } from "http-proxy-middleware";
+import axios from "axios";
 
-const proxy = createProxyMiddleware({
-  target: "http://openapi.seoul.go.kr:8088",
-  changeOrigin: true,
-  pathRewrite: {
-    "^/seoul-api": "",
-  },
-});
+export default async function handler(req, res) {
+  const { location } = req.query;
 
-export default (req, res) => {
-  proxy(req, res, (err) => {
-    if (err) {
-      res.status(500).send("Proxy error");
-    }
-  });
-};
+  if (!location) {
+    return res.status(400).json({ error: "Location is required" });
+  }
+
+  try {
+    const apiUrl = `http://openapi.seoul.go.kr:8088/${
+      process.env.VITE_SEOUL_API_KEY
+    }/json/citydata_ppltn/1/2/${encodeURIComponent(location)}`;
+    const response = await axios.get(apiUrl);
+
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error("API request error:", error);
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
+}

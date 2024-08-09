@@ -5,12 +5,10 @@ import { Data, Response, NormalResponse } from "./types";
 function App() {
   const [data, setData] = useState<Data | undefined>();
 
-  const fetchData = async () => {
+  const fetchData = async (location: string) => {
     try {
       const response = await fetch(
-        `/seoul-api/${
-          import.meta.env.VITE_SEOUL_API_KEY
-        }/json/citydata_ppltn/1/2/신림역`
+        `/api/proxy?location=${encodeURIComponent(location)}`
       );
       const data: Response = await response.json();
 
@@ -25,10 +23,20 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData("강남 MICE 관광특구");
   }, []);
 
-  return <>{data ? data.AREA_CONGEST_MSG : ""}</>;
+  return (
+    <>
+      <button onClick={() => fetchData("강남 MICE 관광특구")}>
+        강남 MICE 관광특구
+      </button>
+      <button onClick={() => fetchData("동대문 관광특구")}>
+        동대문 관광특구
+      </button>
+      <p>{data ? data.AREA_CONGEST_MSG : ""}</p>
+    </>
+  );
 }
 
 export default App;
