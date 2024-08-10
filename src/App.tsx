@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import { Data, Response, NormalResponse } from "./types";
+import Info from "./components/Info";
 import Map from "./components/Map";
 
 function App() {
-  const [data, setData] = useState<Data | undefined>();
+  const [data, setData] = useState<Data>();
 
   const fetchData = async (location: string) => {
     try {
@@ -23,10 +24,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    fetchData("강남 MICE 관광특구");
-  }, []);
-
   return (
     <>
       <button onClick={() => fetchData("강남 MICE 관광특구")}>
@@ -35,7 +32,7 @@ function App() {
       <button onClick={() => fetchData("동대문 관광특구")}>
         동대문 관광특구
       </button>
-      <p>{data ? data.AREA_CONGEST_MSG : ""}</p>
+      {data && <Info data={data} />}
       <Map />
     </>
   );
