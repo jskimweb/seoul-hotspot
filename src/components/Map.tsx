@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { HOTSPOTS } from "../constants";
 
 declare global {
   interface Window {
@@ -38,10 +39,26 @@ const Map = () => {
         const mapRef = document.getElementById("map");
         if (mapRef) {
           const options = {
-            center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-            level: 3,
+            center: new window.kakao.maps.LatLng(
+              37.577617793672175,
+              126.97690013106795
+            ),
+            level: 9,
           };
-          new window.kakao.maps.Map(mapRef, options);
+          const map = new window.kakao.maps.Map(mapRef, options);
+
+          for (let i = 0; i < HOTSPOTS.length; i++) {
+            const marker = new window.kakao.maps.Marker({
+              map, // 마커를 표시할 지도
+              position: new window.kakao.maps.LatLng(
+                HOTSPOTS[i].latlng[0],
+                HOTSPOTS[i].latlng[1]
+              ),
+              title: HOTSPOTS[i].name,
+            });
+
+            marker.setMap(map);
+          }
         }
       } catch (error) {
         console.error("Error initializing Kakao Map:", error);

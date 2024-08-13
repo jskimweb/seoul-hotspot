@@ -11,7 +11,7 @@ export type Response = NormalResponse | ErrorResponse;
 
 export interface Data {
   AREA_CD: string; // 핫스팟 코드명
-  AREA_CONGEST_LVL: string; // 장소 혼잡도 지표
+  AREA_CONGEST_LVL: "여유" | "보통" | "약간 붐빔" | "붐빔"; // 장소 혼잡도 지표
   AREA_CONGEST_MSG: string; // 장소 혼합도 지표 관련 메세지
   AREA_NM: string; // 핫스팟 장소명
   AREA_PPLTN_MAX: string; // 실시간 인구 지표 최대값
