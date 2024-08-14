@@ -1,83 +1,98 @@
-import { useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState, useCallback } from "react";
 import { HOTSPOTS } from "../constants";
 
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     kakao: any;
   }
 }
 
-const loadKakaoMapScript = () => {
-  return new Promise<void>((resolve, reject) => {
-    const script = document.createElement("script");
+export const useKakaoMap = ({
+  setSpot,
+}: {
+  setSpot: (spot: string) => void;
+}) => {
+  const [map, setMap] = useState<any>();
 
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${
-      import.meta.env.VITE_KAKAO_MAP_API_KEY
-    }&autoload=false`;
-    script.async = true;
-    script.onload = () => {
-      if (window.kakao && window.kakao.maps) {
-        window.kakao.maps.load(resolve);
-      } else {
-        reject(new Error("Kakao Maps API failed to load"));
-      }
-    };
-    script.onerror = () => reject(new Error("Failed to load Kakao Maps API"));
-
-    document.head.appendChild(script);
-  });
-};
-
-export const useKakaoMap = (fetchData: (location: string) => Promise<void>) => {
   useEffect(() => {
-    (async () => {
+    const loadKakaoMapScript = () => {
+      return new Promise<void>((resolve, reject) => {
+        const script = document.createElement("script");
+
+        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${
+          import.meta.env.VITE_KAKAO_MAP_API_KEY
+        }&autoload=false`;
+        script.async = true;
+        script.onload = () => {
+          if (window.kakao && window.kakao.maps) {
+            window.kakao.maps.load(resolve);
+          } else {
+            reject(new Error("Kakao Maps API failed to load"));
+          }
+        };
+        script.onerror = () =>
+          reject(new Error("Failed to load Kakao Maps API"));
+
+        document.head.appendChild(script);
+      });
+    };
+
+    const initializeMap = async () => {
       try {
         await loadKakaoMapScript();
 
         const mapRef = document.getElementById("map");
-        if (mapRef) {
-          const options = {
-            center: new window.kakao.maps.LatLng(
-              HOTSPOTS[0].latlng[0],
-              HOTSPOTS[0].latlng[1]
-            ),
-            level: 8,
-          };
-          const map = new window.kakao.maps.Map(mapRef, options);
 
-          // 마커 및 마커 클릭 이벤트 추가
-          for (let i = 0; i < HOTSPOTS.length; i++) {
-            const marker = new window.kakao.maps.Marker({
-              map,
-              position: new window.kakao.maps.LatLng(
-                HOTSPOTS[i].latlng[0],
-                HOTSPOTS[i].latlng[1]
-              ),
-              title: HOTSPOTS[i].name,
-            });
-
-            window.kakao.maps.event.addListener(marker, "click", () => {
-              fetchData(HOTSPOTS[i].name);
-
-              // 해당 마커의 좌표를 중심으로 부드럽게 이동
-              map.panTo(
-                new window.kakao.maps.LatLng(
-                  HOTSPOTS[i].latlng[0],
-                  HOTSPOTS[i].latlng[1]
-                )
-              );
-            });
-
-            marker.setMap(map);
-          }
-
-          // 도로 교통정보 추가
-          map.addOverlayMapTypeId(window.kakao.maps.MapTypeId.TRAFFIC);
+        if (!mapRef) {
+          throw new Error("'#map' element is not found");
         }
+
+        const options = {
+          center: new window.kakao.maps.LatLng(
+            HOTSPOTS[0].latlng[0],
+            HOTSPOTS[0].latlng[1]
+          ),
+          level: 8,
+        };
+        const kakaoMap = new window.kakao.maps.Map(mapRef, options);
+
+        // 마커 및 마커 클릭 이벤트 추가
+        for (const { name, latlng } of HOTSPOTS) {
+          const marker = new window.kakao.maps.Marker({
+            map: kakaoMap,
+            position: new window.kakao.maps.LatLng(latlng[0], latlng[1]),
+            title: name,
+          });
+
+          window.kakao.maps.event.addListener(marker, "click", () => {
+            setSpot(name);
+            kakaoMap.panTo(new window.kakao.maps.LatLng(latlng[0], latlng[1]));
+          });
+
+          marker.setMap(kakaoMap);
+        }
+
+        // 도로 교통정보 추가
+        kakaoMap.addOverlayMapTypeId(window.kakao.maps.MapTypeId.TRAFFIC);
+
+        setMap(kakaoMap);
       } catch (error) {
         console.error("Error initializing Kakao Map:", error);
       }
-    })();
-  }, [fetchData]);
+    };
+
+    if (!map) {
+      initializeMap();
+    }
+  }, [map, setSpot]);
+
+  const panTo = useCallback((latlng: number[]) => {
+    if (map) {
+      map.panTo(new window.kakao.maps.LatLng(latlng[0], latlng[1]));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return { panTo };
 };
