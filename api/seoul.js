@@ -1,12 +1,10 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-  const { location }: { location: string } = req.query;
+  const { location } = req.query;
 
   if (!location) {
-    return res
-      .status(400)
-      .json({ error: "query parameter 'location' is required" });
+    return res.status(400).json({ error: "Location is required" });
   }
 
   try {
