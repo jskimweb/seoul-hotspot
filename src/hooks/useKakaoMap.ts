@@ -46,6 +46,7 @@ export const useKakaoMap = (fetchData: (location: string) => Promise<void>) => {
           };
           const map = new window.kakao.maps.Map(mapRef, options);
 
+          // 마커 및 마커 클릭 이벤트 추가
           for (let i = 0; i < HOTSPOTS.length; i++) {
             const marker = new window.kakao.maps.Marker({
               map,
@@ -58,10 +59,21 @@ export const useKakaoMap = (fetchData: (location: string) => Promise<void>) => {
 
             window.kakao.maps.event.addListener(marker, "click", () => {
               fetchData(HOTSPOTS[i].name);
+
+              // 해당 마커의 좌표를 중심으로 부드럽게 이동
+              map.panTo(
+                new window.kakao.maps.LatLng(
+                  HOTSPOTS[i].latlng[0],
+                  HOTSPOTS[i].latlng[1]
+                )
+              );
             });
 
             marker.setMap(map);
           }
+
+          // 도로 교통정보 추가
+          map.addOverlayMapTypeId(window.kakao.maps.MapTypeId.TRAFFIC);
         }
       } catch (error) {
         console.error("Error initializing Kakao Map:", error);
