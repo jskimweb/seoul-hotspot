@@ -4,10 +4,10 @@ import type { Data, Response, NormalResponse } from "../types";
 export const useFetchData = () => {
   const [data, setData] = useState<Data>();
 
-  const fetchData = useCallback(async (location: string) => {
+  const fetchData = useCallback(async (spot: string) => {
     try {
       const response = await fetch(
-        `/api/seoul?location=${encodeURIComponent(location)}`
+        `/api/seoul?location=${encodeURIComponent(spot)}`
       );
       const data: Response = await response.json();
 
