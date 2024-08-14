@@ -1,4 +1,5 @@
 import { useKakaoMap } from "../hooks/useKakaoMap";
+import "./Map.css";
 
 const Map = ({
   fetchData,
@@ -9,7 +10,7 @@ const Map = ({
 
   return (
     <>
-      <div id="map" style={{ width: "500px", height: "400px" }}></div>
+      <div id="map" />
     </>
   );
 };

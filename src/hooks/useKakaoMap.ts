@@ -39,10 +39,10 @@ export const useKakaoMap = (fetchData: (location: string) => Promise<void>) => {
         if (mapRef) {
           const options = {
             center: new window.kakao.maps.LatLng(
-              37.577617793672175,
-              126.97690013106795
+              HOTSPOTS[0].latlng[0],
+              HOTSPOTS[0].latlng[1]
             ),
-            level: 9,
+            level: 8,
           };
           const map = new window.kakao.maps.Map(mapRef, options);
 

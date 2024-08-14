@@ -1,6 +1,6 @@
 import "./App.css";
-import Info from "./components/Info";
 import Map from "./components/Map";
+import Info from "./components/Info";
 import { useFetchData } from "./hooks/useFetchData";
 
 function App() {
@@ -8,8 +8,8 @@ function App() {
 
   return (
     <>
-      {data && <Info data={data} />}
       <Map fetchData={fetchData} />
+      {data && <Info data={data} />}
     </>
   );
 }
