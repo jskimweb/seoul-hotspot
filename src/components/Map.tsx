@@ -8,7 +8,11 @@ declare global {
   }
 }
 
-const Map = () => {
+const Map = ({
+  fetchData,
+}: {
+  fetchData: (location: string) => Promise<void>;
+}) => {
   useEffect(() => {
     const loadKakaoMapScript = () => {
       return new Promise<void>((resolve, reject) => {
@@ -57,6 +61,10 @@ const Map = () => {
               title: HOTSPOTS[i].name,
             });
 
+            window.kakao.maps.event.addListener(marker, "click", () => {
+              fetchData(HOTSPOTS[i].name);
+            });
+
             marker.setMap(map);
           }
         }
@@ -64,7 +72,7 @@ const Map = () => {
         console.error("Error initializing Kakao Map:", error);
       }
     })();
-  }, []);
+  }, [fetchData]);
 
   return (
     <>

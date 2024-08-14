@@ -1,4 +1,5 @@
 import { Data } from "../types";
+import { memo } from "react";
 
 const Info = ({ data }: { data: Data }) => {
   const {
@@ -39,4 +40,4 @@ const Info = ({ data }: { data: Data }) => {
   );
 };
 
-export default Info;
+export default memo(Info);

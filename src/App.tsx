@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "./App.css";
 import { Data, Response, NormalResponse } from "./types";
 import Info from "./components/Info";
@@ -24,16 +24,12 @@ function App() {
     }
   };
 
+  const memoizedFetchData = useCallback(fetchData, []);
+
   return (
     <>
-      <button onClick={() => fetchData("강남 MICE 관광특구")}>
-        강남 MICE 관광특구
-      </button>
-      <button onClick={() => fetchData("동대문 관광특구")}>
-        동대문 관광특구
-      </button>
       {data && <Info data={data} />}
-      <Map />
+      <Map fetchData={memoizedFetchData} />
     </>
   );
 }
