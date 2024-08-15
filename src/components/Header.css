@@ -1,3 +1,8 @@
 .header {
   grid-area: 1 / 1 / 2 / 3;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  border-bottom: 1px solid black;
 }

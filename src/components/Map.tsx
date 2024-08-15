@@ -22,9 +22,9 @@ const Map = ({ fetchData }: { fetchData: (spot: string) => Promise<void> }) => {
   }, [spot, fetchData, panTo]);
 
   return (
-    <>
+    <div className="map">
       <div id="map" />
-    </>
+    </div>
   );
 };
 

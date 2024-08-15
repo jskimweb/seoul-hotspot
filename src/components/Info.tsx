@@ -1,5 +1,6 @@
 import { Data } from "../types";
 import { memo } from "react";
+import "./Info.css";
 
 const Info = ({ data }: { data: Data }) => {
   const {
