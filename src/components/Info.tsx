@@ -22,7 +22,7 @@ const Info = ({ data }: { data: Data }) => {
   } = data;
 
   return (
-    <>
+    <div className="info">
       <h4>{AREA_NM}</h4>
       <p>{`${AREA_CONGEST_LVL} / ${AREA_CONGEST_MSG}`}</p>
       <p>{`인구 지표: ${AREA_PPLTN_MIN} ~ ${AREA_PPLTN_MAX}`}</p>
@@ -36,7 +36,7 @@ const Info = ({ data }: { data: Data }) => {
       <p>{`60대 비율: ${PPLTN_RATE_60}%`}</p>
       <p>{`70대 비율: ${PPLTN_RATE_70}%`}</p>
       <p>{`${PPLTN_TIME} 기준`}</p>
-    </>
+    </div>
   );
 };
 
