@@ -10,8 +10,10 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Map fetchData={fetchData} />
-      {data && <Info data={data} />}
+      <div className="body">
+        <Map fetchData={fetchData} />
+        {data && <Info data={data} />}
+      </div>
     </div>
   );
 }
