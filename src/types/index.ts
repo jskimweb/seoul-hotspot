@@ -17,7 +17,7 @@ export interface Data {
   AREA_PPLTN_MAX: string; // 실시간 인구 지표 최대값
   AREA_PPLTN_MIN: string; // 실시간 인구 지표 최소값
   FCST_PPLTN: {
-    FCST_CONGEST_LVL: string; // 장소 예측 혼합도 지표
+    FCST_CONGEST_LVL: "여유" | "보통" | "약간 붐빔" | "붐빔"; // 장소 예측 혼합도 지표
     FCST_PPLTN_MAX: string; // 예측 실시간 인구 지표 최대값
     FCST_PPLTN_MIN: string; // 예측 실시간 인구 지표 최소값
     FCST_TIME: string; // 인구 예측시점
