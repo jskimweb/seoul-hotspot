@@ -24,7 +24,13 @@
   border-radius: 15px;
 }
 
+.info-forecast .item-wrapper .item .time {
+  font-size: 13px;
+  color: gray;
+}
+
 .info-forecast .item-wrapper .item .level {
+  font-size: 18px;
   font-weight: bold;
 }
 
