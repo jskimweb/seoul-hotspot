@@ -27,7 +27,12 @@ const InfoGender = ({ data }: { data: Data }) => {
         datasets: [
           {
             data: [MALE_PPLTN_RATE, FEMALE_PPLTN_RATE],
-            backgroundColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)"],
+            backgroundColor: [
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 99, 132, 0.2)",
+            ],
+            borderColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)"],
+            borderWidth: 2,
           },
         ],
       },

@@ -15,7 +15,7 @@ const InfoCongest = ({ data }: { data: Data }) => {
   return (
     <div className={`info-congest ${levelClassName}`}>
       <span className="time">{`${PPLTN_TIME} 기준`}</span>
-      <h4 className="spot">{AREA_NM}</h4>
+      <h4 className="spot">{`< ${AREA_NM} >`}</h4>
       <span className={`level`}>{AREA_CONGEST_LVL}</span>
       <span className="message">{`"${AREA_CONGEST_MSG}"`}</span>
     </div>

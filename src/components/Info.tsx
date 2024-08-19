@@ -2,6 +2,7 @@ import type { Data } from "../types";
 import { memo } from "react";
 import "./Info.css";
 import InfoCongest from "./InfoCongest";
+import InfoForecast from "./InfoForecast";
 import InfoGender from "./InfoGender";
 import InfoAge from "./InfoAge";
 
@@ -20,6 +21,7 @@ const Info = ({ data }: { data: Data }) => {
   return (
     <div className="info">
       <InfoCongest data={data} />
+      <InfoForecast data={data} />
       <div className="gender-and-age">
         <InfoGender data={data} />
         <InfoAge
