@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: "Pretendard-Regular";
+  user-select: none;
+}
+
 html,
 body,
 div,
@@ -82,8 +95,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
-  font-size: 100%;
+  font-weight: inherit;
   vertical-align: baseline;
 }
 article,

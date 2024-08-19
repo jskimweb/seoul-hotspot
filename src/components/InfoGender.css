@@ -1,11 +1,11 @@
-.info-age {
+.info-gender {
   width: 50%;
   border: 1px solid lightgray;
   border-radius: 15px;
   padding: 20px;
 }
 
-.info-age .title {
+.info-gender .title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 20px;
