@@ -1,27 +1,16 @@
-import Header from "./components/Header";
-import Map from "./components/Map";
-import Info from "./components/Info";
-import { useFetchData } from "./hooks/useFetchData";
-import styled from "styled-components";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
 
 function App() {
-  const { data, fetchData } = useFetchData();
-
   return (
     <>
-      <Header />
-      <Body>
-        <Map fetchData={fetchData} />
-        {data && <Info data={data} />}
-      </Body>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
     </>
   );
 }
 
 export default App;
-
-const Body = styled.div`
-  width: 1160px;
-  margin: 0 auto;
-  padding: 20px 0;
-`;

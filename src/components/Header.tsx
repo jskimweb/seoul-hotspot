@@ -1,10 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = () => {
+  const nav = useNavigate();
+
+  const buttonLabel = location.pathname === "/" ? "검색" : "뒤로가기";
+
+  const onClickButton = () => {
+    nav(location.pathname === "/" ? "/search" : "/");
+  };
+
   return (
-    <StyledHeader >
+    <StyledHeader>
       <Container>
         <Title>서울 핫스팟</Title>
+        <button onClick={onClickButton}>{buttonLabel}</button>
       </Container>
     </StyledHeader>
   );
@@ -20,6 +30,8 @@ const StyledHeader = styled.header`
 `;
 
 const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 1160px;
   margin: 0 auto;
 `;
