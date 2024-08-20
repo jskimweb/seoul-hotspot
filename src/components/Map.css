@@ -1,9 +1,0 @@
-.map {
-  height: 500px;
-}
-
-.map #map {
-  height: 100%;
-  border: 1px solid lightgray;
-  border-radius: 15px;
-}

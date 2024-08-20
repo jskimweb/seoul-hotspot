@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useKakaoMap } from "../hooks/useKakaoMap";
-import "./Map.css";
 import { HOTSPOTS } from "../constants";
+import styled from "styled-components";
 
 const Map = ({ fetchData }: { fetchData: (spot: string) => Promise<void> }) => {
   const [spot, setSpot] = useState<string>();
@@ -22,10 +22,20 @@ const Map = ({ fetchData }: { fetchData: (spot: string) => Promise<void> }) => {
   }, [spot, fetchData, panTo]);
 
   return (
-    <div className="map">
-      <div id="map" />
-    </div>
+    <StyledMap>
+      <MapObject id="map" />
+    </StyledMap>
   );
 };
 
 export default Map;
+
+const StyledMap = styled.div`
+  height: 500px;
+`;
+
+const MapObject = styled.div`
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+`;

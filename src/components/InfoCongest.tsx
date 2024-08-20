@@ -1,5 +1,5 @@
 import type { Data } from "../types";
-import "./InfoCongest.css";
+import styled from "styled-components";
 
 const InfoCongest = ({ data }: { data: Data }) => {
   const {
@@ -20,14 +20,74 @@ const InfoCongest = ({ data }: { data: Data }) => {
       : "level-4";
 
   return (
-    <div className={`info-congest ${levelClassName}`}>
-      <span className="time">{`${PPLTN_TIME} 기준`}</span>
-      <h4 className="spot">{`${AREA_NM}`}</h4>
-      <span className={`level`}>{AREA_CONGEST_LVL}</span>
-      <span className="number">{`${AREA_PPLTN_MIN} ~ ${AREA_PPLTN_MAX} 명`}</span>
-      <span className="message">{`"${AREA_CONGEST_MSG}"`}</span>
-    </div>
+    <StyledInfoCongest className={levelClassName}>
+      <Time>{`${PPLTN_TIME} 기준`}</Time>
+      <Spot>{`${AREA_NM}`}</Spot>
+      <Level className={levelClassName}>{AREA_CONGEST_LVL}</Level>
+      <span>{`${AREA_PPLTN_MIN} ~ ${AREA_PPLTN_MAX} 명`}</span>
+      <span>{`"${AREA_CONGEST_MSG}"`}</span>
+    </StyledInfoCongest>
   );
 };
 
 export default InfoCongest;
+
+const StyledInfoCongest = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 16px 20px 20px;
+  border-radius: 15px;
+
+  &.level-1 {
+    border: 2px solid #28c21a;
+  }
+
+  &.level-2 {
+    border: 2px solid #f9ca44;
+  }
+
+  &.level-3 {
+    border: 2px solid #fb7625;
+  }
+
+  &.level-4 {
+    border: 2px solid #ea0800;
+  }
+`;
+
+const Time = styled.span`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 13px;
+  color: gray;
+`;
+
+const Spot = styled.h4`
+  font-size: 18px;
+`;
+
+const Level = styled.span`
+  font-size: 40px;
+  font-weight: bold;
+
+  &.level-1 {
+    color: #28c21a;
+  }
+
+  &.level-2 {
+    color: #f9ca44;
+  }
+
+  &.level-3 {
+    color: #fb7625;
+  }
+
+  &.level-4 {
+    color: #ea0800;
+  }
+`;

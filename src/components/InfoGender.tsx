@@ -1,7 +1,7 @@
 import { type LegacyRef, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import "./InfoGender.css";
 import type { Data } from "../types";
+import styled from "styled-components";
 
 const InfoGender = ({ data }: { data: Data }) => {
   const { FEMALE_PPLTN_RATE, MALE_PPLTN_RATE } = data;
@@ -44,11 +44,24 @@ const InfoGender = ({ data }: { data: Data }) => {
   }, [data]);
 
   return (
-    <div className="info-gender">
-      <h4 className="title">성별 인구 비율</h4>
+    <StyledInfoGender>
+      <Title>성별 인구 비율</Title>
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
-    </div>
+    </StyledInfoGender>
   );
 };
 
 export default InfoGender;
+
+const StyledInfoGender = styled.div`
+  width: 50%;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 20px;
+`;
+
+const Title = styled.h4`
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;

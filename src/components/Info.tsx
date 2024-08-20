@@ -1,10 +1,10 @@
 import type { Data } from "../types";
 import { memo } from "react";
-import "./Info.css";
 import InfoCongest from "./InfoCongest";
 import InfoForecast from "./InfoForecast";
 import InfoGender from "./InfoGender";
 import InfoAge from "./InfoAge";
+import styled from "styled-components";
 
 const Info = ({ data }: { data: Data }) => {
   const {
@@ -19,10 +19,10 @@ const Info = ({ data }: { data: Data }) => {
   } = data;
 
   return (
-    <div className="info">
+    <StyledInfo>
       <InfoCongest data={data} />
       <InfoForecast data={data} />
-      <div className="gender-and-age">
+      <GenderAndAge>
         <InfoGender data={data} />
         <InfoAge
           data={[
@@ -36,9 +36,18 @@ const Info = ({ data }: { data: Data }) => {
             PPLTN_RATE_70,
           ]}
         />
-      </div>
-    </div>
+      </GenderAndAge>
+    </StyledInfo>
   );
 };
 
 export default memo(Info);
+
+const StyledInfo = styled.div`
+  padding-top: 20px;
+`;
+
+const GenderAndAge = styled.div`
+  display: flex;
+  gap: 20px;
+`;
