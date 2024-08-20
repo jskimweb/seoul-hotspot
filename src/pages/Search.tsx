@@ -1,11 +1,16 @@
 import Header from "../components/Header";
 import styled from "styled-components";
+import { HOTSPOTS } from "../constants/index";
 
 const Search = () => {
   return (
     <>
       <Header />
-      <Body>검색화면</Body>
+      <Body>
+        {HOTSPOTS.map((spot) => {
+          return <div key={spot.name}>{spot.name}</div>
+        })}
+      </Body>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useKakaoMap } from "../hooks/useKakaoMap";
-import { HOTSPOTS } from "../constants";
+import { DEFAULT_HOTSPOT, HOTSPOTS } from "../constants";
 import styled from "styled-components";
 
 const Map = ({ fetchData }: { fetchData: (spot: string) => Promise<void> }) => {
@@ -9,7 +9,7 @@ const Map = ({ fetchData }: { fetchData: (spot: string) => Promise<void> }) => {
 
   useEffect(() => {
     if (!spot) {
-      setSpot(HOTSPOTS[0].name);
+      setSpot(DEFAULT_HOTSPOT.name);
       return;
     }
 

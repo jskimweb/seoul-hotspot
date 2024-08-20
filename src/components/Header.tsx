@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Header = () => {
   const nav = useNavigate();
 
-  const buttonLabel = location.pathname === "/" ? "검색" : "뒤로가기";
+  const buttonLabel = location.pathname === "/" ? "검색" : "이전";
 
   const onClickButton = () => {
     nav(location.pathname === "/" ? "/search" : "/");
