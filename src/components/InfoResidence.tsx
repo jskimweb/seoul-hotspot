@@ -1,10 +1,10 @@
-import { type LegacyRef, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import type { Data } from "../types";
+import { type LegacyRef, useEffect, useRef } from "react";
 import styled from "styled-components";
+import type { Data } from "../types";
 
-const InfoGender = ({ data }: { data: Data }) => {
-  const { FEMALE_PPLTN_RATE, MALE_PPLTN_RATE } = data;
+const InfoResidence = ({ data }: { data: Data }) => {
+  const { NON_RESNT_PPLTN_RATE, RESNT_PPLTN_RATE } = data;
 
   const chartRef = useRef<HTMLCanvasElement>();
 
@@ -23,15 +23,12 @@ const InfoGender = ({ data }: { data: Data }) => {
         },
       },
       data: {
-        labels: ["남성", "여성"],
+        labels: ["상주", "비상주"],
         datasets: [
           {
-            data: [MALE_PPLTN_RATE, FEMALE_PPLTN_RATE],
-            backgroundColor: [
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 99, 132, 0.2)",
-            ],
-            borderColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)"],
+            data: [RESNT_PPLTN_RATE, NON_RESNT_PPLTN_RATE],
+            backgroundColor: ["rgba(172,61,160, 0.2)", "rgba(80,170,174, 0.2)"],
+            borderColor: ["rgb(172,61,160)", "rgb(80,170,174)"],
             borderWidth: 2,
           },
         ],
@@ -44,16 +41,16 @@ const InfoGender = ({ data }: { data: Data }) => {
   }, [data]);
 
   return (
-    <StyledInfoGender>
-      <Title>성별 인구 비율</Title>
+    <StyledInfoResidence>
+      <Title>상주/비상주 인구 비율</Title>
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
-    </StyledInfoGender>
+    </StyledInfoResidence>
   );
 };
 
-export default InfoGender;
+export default InfoResidence;
 
-const StyledInfoGender = styled.div`
+const StyledInfoResidence = styled.div`
   border: 1px solid lightgray;
   border-radius: 15px;
   padding: 20px;

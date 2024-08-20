@@ -35,24 +35,24 @@ const InfoAge = ({ data }: { data: string[] }) => {
           {
             data,
             backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(255, 159, 64, 0.2)",
-              "rgba(255, 205, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-              "rgba(201, 203, 207, 0.2)",
-              "rgba(201, 203, 207, 0.2)",
+              "rgba(102, 204, 255, 0.2)",
+              "rgba(0, 153, 204, 0.2)",
+              "rgba(51, 204, 51, 0.2)",
+              "rgba(0, 153, 51, 0.2)",
+              "rgba(255, 204, 51, 0.2)",
+              "rgba(255, 153, 51, 0.2)",
+              "rgba(255, 102, 102, 0.2)",
+              "rgba(204, 51, 51, 0.2)",
             ],
             borderColor: [
-              "rgb(255, 99, 132)",
-              "rgb(255, 159, 64)",
-              "rgb(255, 205, 86)",
-              "rgb(75, 192, 192)",
-              "rgb(54, 162, 235)",
-              "rgb(153, 102, 255)",
-              "rgb(201, 203, 207)",
-              "rgb(201, 203, 207)",
+              "rgb(102, 204, 255)",
+              "rgb(0, 153, 204)",
+              "rgb(51, 204, 51)",
+              "rgb(0, 153, 51)",
+              "rgb(255, 204, 51)",
+              "rgb(255, 153, 51)",
+              "rgb(255, 102, 102)",
+              "rgb(204, 51, 51)",
             ],
             borderWidth: 2,
           },
@@ -76,7 +76,6 @@ const InfoAge = ({ data }: { data: string[] }) => {
 export default InfoAge;
 
 const StyledInfoAge = styled.div`
-  width: 50%;
   border: 1px solid lightgray;
   border-radius: 15px;
   padding: 20px;

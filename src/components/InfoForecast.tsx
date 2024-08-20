@@ -19,7 +19,7 @@ const InfoForecast = ({ data }: { data: Data }) => {
       <ItemWrapper>
         {FCST_PPLTN.map((item) => {
           return (
-            <Item>
+            <Item key={item.FCST_TIME}>
               <Time>{item.FCST_TIME}</Time>
               <Level className={levelClassName(item.FCST_CONGEST_LVL)}>
                 {item.FCST_CONGEST_LVL}

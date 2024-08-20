@@ -4,6 +4,7 @@ import InfoCongest from "./InfoCongest";
 import InfoForecast from "./InfoForecast";
 import InfoGender from "./InfoGender";
 import InfoAge from "./InfoAge";
+import InfoResidence from "./InfoResidence";
 import styled from "styled-components";
 
 const Info = ({ data }: { data: Data }) => {
@@ -36,6 +37,7 @@ const Info = ({ data }: { data: Data }) => {
             PPLTN_RATE_70,
           ]}
         />
+        <InfoResidence data={data} />
       </GenderAndAge>
     </StyledInfo>
   );
@@ -48,6 +50,7 @@ const StyledInfo = styled.div`
 `;
 
 const GenderAndAge = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 `;
