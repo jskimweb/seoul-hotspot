@@ -25,8 +25,8 @@ export default Header;
 const StyledHeader = styled.header`
   display: flex;
   align-items: center;
-  height: 50px;
-  border-bottom: 1px solid lightgray;
+  height: 60px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 const Container = styled.div`

@@ -51,9 +51,9 @@ const InfoResidence = ({ data }: { data: Data }) => {
 export default InfoResidence;
 
 const StyledInfoResidence = styled.div`
-  border: 1px solid lightgray;
   border-radius: 15px;
-  padding: 20px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 const Title = styled.h4`

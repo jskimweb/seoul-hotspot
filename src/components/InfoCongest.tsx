@@ -38,9 +38,10 @@ const StyledInfoCongest = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
-  padding: 16px 20px 20px;
+  margin-bottom: 60px;
+  padding: 20px 30px 30px;
   border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
   &.level-1 {
     border: 2px solid #28c21a;
@@ -61,8 +62,8 @@ const StyledInfoCongest = styled.div`
 
 const Time = styled.span`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   font-size: 13px;
   color: gray;
 `;

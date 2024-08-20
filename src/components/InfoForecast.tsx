@@ -36,7 +36,7 @@ const InfoForecast = ({ data }: { data: Data }) => {
 export default InfoForecast;
 
 const StyledInfoForecast = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 `;
 
 const Title = styled.h4`
@@ -48,7 +48,7 @@ const Title = styled.h4`
 const ItemWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  gap: 30px;
 `;
 
 const Item = styled.div`
@@ -56,9 +56,9 @@ const Item = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 20px;
-  border: 1px solid lightgray;
+  padding: 15px;
   border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 const Time = styled.span`

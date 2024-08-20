@@ -46,11 +46,11 @@ const Info = ({ data }: { data: Data }) => {
 export default memo(Info);
 
 const StyledInfo = styled.div`
-  padding-top: 20px;
+  padding-top: 30px;
 `;
 
 const GenderAndAge = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 30px;
 `;

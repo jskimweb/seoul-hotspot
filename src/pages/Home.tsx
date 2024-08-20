@@ -23,5 +23,5 @@ export default Home;
 const Body = styled.div`
   width: 1160px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 30px 0;
 `;

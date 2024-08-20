@@ -36,6 +36,6 @@ const StyledMap = styled.div`
 
 const MapObject = styled.div`
   height: 100%;
-  border: 1px solid lightgray;
   border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
