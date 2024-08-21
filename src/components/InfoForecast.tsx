@@ -1,5 +1,6 @@
 import type { Data } from "../types";
 import styled from "styled-components";
+import InfoContainer from './InfoContainer';
 
 const InfoForecast = ({ data }: { data: Data }) => {
   const { FCST_PPLTN } = data;
@@ -14,8 +15,7 @@ const InfoForecast = ({ data }: { data: Data }) => {
   };
 
   return (
-    <StyledInfoForecast>
-      <Title>인구 추이 및 전망</Title>
+    <InfoContainer title="인구 추이 및 전망">
       <ItemWrapper>
         {FCST_PPLTN.map((item) => {
           return (
@@ -29,21 +29,11 @@ const InfoForecast = ({ data }: { data: Data }) => {
           );
         })}
       </ItemWrapper>
-    </StyledInfoForecast>
+    </InfoContainer>
   );
 };
 
 export default InfoForecast;
-
-const StyledInfoForecast = styled.div`
-  margin-bottom: 60px;
-`;
-
-const Title = styled.h4`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
 
 const ItemWrapper = styled.div`
   display: grid;

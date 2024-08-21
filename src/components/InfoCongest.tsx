@@ -38,7 +38,7 @@ const StyledInfoCongest = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   padding: 20px 30px 30px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

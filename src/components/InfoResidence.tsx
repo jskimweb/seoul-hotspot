@@ -1,7 +1,7 @@
 import Chart from "chart.js/auto";
 import { type LegacyRef, useEffect, useRef } from "react";
-import styled from "styled-components";
 import type { Data } from "../types";
+import InfoContainer from "./InfoContainer";
 
 const InfoResidence = ({ data }: { data: Data }) => {
   const { NON_RESNT_PPLTN_RATE, RESNT_PPLTN_RATE } = data;
@@ -38,26 +38,13 @@ const InfoResidence = ({ data }: { data: Data }) => {
     return () => {
       chart.destroy();
     };
-  }, [data]);
+  }, [NON_RESNT_PPLTN_RATE, RESNT_PPLTN_RATE, data]);
 
   return (
-    <StyledInfoResidence>
-      <Title>상주/비상주 인구 비율</Title>
+    <InfoContainer title="상주/비상주 인구 비율">
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
-    </StyledInfoResidence>
+    </InfoContainer>
   );
 };
 
 export default InfoResidence;
-
-const StyledInfoResidence = styled.div`
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-
-const Title = styled.h4`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;

@@ -1,7 +1,7 @@
 import { type LegacyRef, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import type { Data } from "../types";
-import styled from "styled-components";
+import InfoContainer from "./InfoContainer";
 
 const InfoGender = ({ data }: { data: Data }) => {
   const { FEMALE_PPLTN_RATE, MALE_PPLTN_RATE } = data;
@@ -41,26 +41,13 @@ const InfoGender = ({ data }: { data: Data }) => {
     return () => {
       chart.destroy();
     };
-  }, [data]);
+  }, [FEMALE_PPLTN_RATE, MALE_PPLTN_RATE, data]);
 
   return (
-    <StyledInfoGender>
-      <Title>성별 인구 비율</Title>
+    <InfoContainer title="성별 인구 비율">
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
-    </StyledInfoGender>
+    </InfoContainer>
   );
 };
 
 export default InfoGender;
-
-const StyledInfoGender = styled.div`
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-
-const Title = styled.h4`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;

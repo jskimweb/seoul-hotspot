@@ -1,6 +1,6 @@
 import { type LegacyRef, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import styled from "styled-components";
+import InfoContainer from "./InfoContainer";
 
 const InfoAge = ({ data }: { data: string[] }) => {
   const chartRef = useRef<HTMLCanvasElement>();
@@ -66,23 +66,10 @@ const InfoAge = ({ data }: { data: string[] }) => {
   }, [data]);
 
   return (
-    <StyledInfoAge>
-      <Title>연령대별 인구 비율</Title>
+    <InfoContainer title="연령대별 인구 비율">
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
-    </StyledInfoAge>
+    </InfoContainer>
   );
 };
 
 export default InfoAge;
-
-const StyledInfoAge = styled.div`
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-
-const Title = styled.h4`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;

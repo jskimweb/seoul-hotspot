@@ -22,8 +22,8 @@ const Info = ({ data }: { data: Data }) => {
   return (
     <StyledInfo>
       <InfoCongest data={data} />
-      <InfoForecast data={data} />
-      <GenderAndAge>
+      <InfoRateContainer>
+        <InfoForecast data={data} />
         <InfoGender data={data} />
         <InfoAge
           data={[
@@ -38,7 +38,7 @@ const Info = ({ data }: { data: Data }) => {
           ]}
         />
         <InfoResidence data={data} />
-      </GenderAndAge>
+      </InfoRateContainer>
     </StyledInfo>
   );
 };
@@ -49,8 +49,12 @@ const StyledInfo = styled.div`
   padding-top: 30px;
 `;
 
-const GenderAndAge = styled.div`
+const InfoRateContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+
+  & > *:first-child {
+    grid-area: 1 / 1 / 2 / 3;
+  }
 `;
