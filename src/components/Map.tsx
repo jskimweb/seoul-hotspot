@@ -2,17 +2,13 @@ import { useEffect, useState } from "react";
 import { useKakaoMap } from "../hooks/useKakaoMap";
 import { DEFAULT_HOTSPOT, HOTSPOTS } from "../constants";
 import styled from "styled-components";
+import { memo } from "react";
 
 const Map = ({ fetchData }: { fetchData: (spot: string) => Promise<void> }) => {
-  const [spot, setSpot] = useState<string>();
+  const [spot, setSpot] = useState<string>(DEFAULT_HOTSPOT.name);
   const { panTo } = useKakaoMap({ setSpot });
 
   useEffect(() => {
-    if (!spot) {
-      setSpot(DEFAULT_HOTSPOT.name);
-      return;
-    }
-
     const hotspot = HOTSPOTS.find((hotspot) => spot === hotspot.name);
 
     if (hotspot) {
@@ -28,7 +24,7 @@ const Map = ({ fetchData }: { fetchData: (spot: string) => Promise<void> }) => {
   );
 };
 
-export default Map;
+export default memo(Map);
 
 const StyledMap = styled.div`
   height: 500px;

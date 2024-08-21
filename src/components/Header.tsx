@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { memo } from "react";
 
 const Header = () => {
   const nav = useNavigate();
@@ -20,7 +21,7 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
 
 const StyledHeader = styled.header`
   display: flex;
