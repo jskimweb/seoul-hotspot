@@ -4,14 +4,20 @@ import Info from "../components/Info";
 import { useFetchData } from "../hooks/useFetchData";
 import styled from "styled-components";
 
-const Home = () => {
+const Home = ({
+  spot,
+  setSpot,
+}: {
+  spot: string;
+  setSpot: (spot: string) => void;
+}) => {
   const { data, fetchData } = useFetchData();
 
   return (
     <>
       <Header />
       <Body>
-        <Map fetchData={fetchData} />
+        <Map spot={spot} setSpot={setSpot} fetchData={fetchData} />
         {data && <Info data={data} />}
       </Body>
     </>

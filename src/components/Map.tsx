@@ -1,12 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useKakaoMap } from "../hooks/useKakaoMap";
-import { DEFAULT_HOTSPOT, HOTSPOTS } from "../constants";
+import { HOTSPOTS } from "../constants";
 import styled from "styled-components";
 import { memo } from "react";
 
-const Map = ({ fetchData }: { fetchData: (spot: string) => Promise<void> }) => {
-  const [spot, setSpot] = useState<string>(DEFAULT_HOTSPOT.name);
-  const { panTo } = useKakaoMap({ setSpot });
+const Map = ({
+  spot,
+  setSpot,
+  fetchData,
+}: {
+  spot: string;
+  setSpot: (spot: string) => void;
+  fetchData: (spot: string) => Promise<void>;
+}) => {
+  const { panTo } = useKakaoMap({ spot, setSpot });
 
   useEffect(() => {
     const hotspot = HOTSPOTS.find((hotspot) => spot === hotspot.name);

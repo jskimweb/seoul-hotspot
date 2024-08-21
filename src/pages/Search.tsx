@@ -2,16 +2,19 @@ import Header from "../components/Header";
 import styled from "styled-components";
 import { HOTSPOTS } from "../constants/index";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Search = () => {
+const Search = ({ setSpot }: { setSpot: (spot: string) => void }) => {
   const [keyword, setKeyword] = useState("");
+  const nav = useNavigate();
 
   const filteredHotspots = HOTSPOTS.filter((spot) =>
     spot.name.includes(keyword)
   );
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
+  const onClickItem = (spot: string) => {
+    setSpot(spot);
+    nav("/");
   };
 
   return (
@@ -20,12 +23,16 @@ const Search = () => {
       <Body>
         <Input
           value={keyword}
-          onChange={onChange}
+          onChange={(e) => setKeyword(e.target.value)}
           placeholder="검색어를 입력해주세요."
         />
         <ItemWrapper>
           {filteredHotspots.map((spot) => {
-            return <Item key={spot.name}>{spot.name}</Item>;
+            return (
+              <Item key={spot.name} onClick={() => onClickItem(spot.name)}>
+                {spot.name}
+              </Item>
+            );
           })}
         </ItemWrapper>
       </Body>

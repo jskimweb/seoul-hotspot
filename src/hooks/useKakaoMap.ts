@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState, useCallback } from "react";
-import { DEFAULT_HOTSPOT, HOTSPOTS } from "../constants";
+import { HOTSPOTS } from "../constants";
 
 declare global {
   interface Window {
@@ -9,8 +9,10 @@ declare global {
 }
 
 export const useKakaoMap = ({
+  spot,
   setSpot,
 }: {
+  spot: string;
   setSpot: (spot: string) => void;
 }) => {
   const [map, setMap] = useState<any>();
@@ -50,8 +52,8 @@ export const useKakaoMap = ({
 
         const options = {
           center: new window.kakao.maps.LatLng(
-            DEFAULT_HOTSPOT.latlng[0],
-            DEFAULT_HOTSPOT.latlng[1]
+            HOTSPOTS.find((hotspot) => hotspot.name === spot)?.latlng[0],
+            HOTSPOTS.find((hotspot) => hotspot.name === spot)?.latlng[1]
           ),
           level: 8,
         };
