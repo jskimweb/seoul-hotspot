@@ -59,14 +59,23 @@ const StyledHeader = styled.header`
   align-items: center;
   height: 6rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  padding: 0 2rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 3rem;
+  }
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 116rem;
+  width: 100%;
   margin: 0 auto;
+
+  @media screen and (min-width: 1440px) {
+    width: 116rem;
+  }
 `;
 
 const Title = styled.h1`

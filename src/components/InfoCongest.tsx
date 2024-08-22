@@ -38,8 +38,8 @@ const StyledInfoCongest = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 3rem;
-  padding: 2rem 3rem 3rem;
+  margin-bottom: 2rem;
+  padding: 3rem 2rem 2rem;
   border-radius: 1.5rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 
@@ -58,22 +58,38 @@ const StyledInfoCongest = styled.div`
   &.level-4 {
     border: 0.2rem solid #ea0800;
   }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 3rem;
+    padding: 2rem 3rem 3rem;
+    padding: 3rem;
+  }
 `;
 
 const Time = styled.span`
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  font-size: 1.3rem;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
   color: gray;
+
+  @media screen and (min-width: 768px) {
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.3rem;
+  }
 `;
 
 const Spot = styled.h4`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const Level = styled.span`
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
 
   &.level-1 {
@@ -91,12 +107,25 @@ const Level = styled.span`
   &.level-4 {
     color: #ea0800;
   }
+
+  @media screen and (min-width: 768px) {
+    font-size: 4rem;
+  }
 `;
 
 const Number = styled.span`
-  font-size: 1.6rem;
+  font-size: 1.3rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.6rem;
+  }
 `;
 
 const Message = styled.span`
-  font-size: 1.6rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.6rem;
+  }
 `;

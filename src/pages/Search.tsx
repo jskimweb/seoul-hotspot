@@ -67,9 +67,13 @@ const Search = ({ setSpot }: { setSpot: (spot: string) => void }) => {
 export default Search;
 
 const Body = styled.div`
-  width: 116rem;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem;
+
+  @media screen and (min-width: 1024px) {
+    width: 116rem;
+    padding: 3rem 0;
+  }
 `;
 
 const InputWrapper = styled.div`
@@ -77,24 +81,30 @@ const InputWrapper = styled.div`
 `;
 
 const Input = styled.input`
-  width: calc(100% - 4rem);
+  width: calc(100% - 2rem);
   height: 6rem;
   outline: none;
   border: none;
   border-bottom: 0.1rem solid lightgray;
-  padding: 0 2rem;
-  margin-bottom: 2rem;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
   font-size: 2rem;
 
   &:focus {
     border-bottom: 0.1rem solid black;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: calc(100% - 4rem);
+    padding: 0 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
 const RemoveButton = styled.button`
   position: absolute;
   top: 3rem;
-  right: 2rem;
+  right: 1rem;
   transform: translateY(-50%);
   width: 2.6rem;
   height: 2.6rem;
@@ -107,14 +117,31 @@ const RemoveButton = styled.button`
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
+
+  @media screen and (min-width: 1024px) {
+    right: 2rem;
+  }
 `;
 
 const ItemWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding: 2rem;
+  gap: 1rem;
   font-size: 2rem;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem;
+  }
+
+  @media screen and (min-width: 1440px) {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2rem;
+  }
 `;
 
 const Item = styled.div`

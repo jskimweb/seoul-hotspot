@@ -46,15 +46,30 @@ const Info = ({ data }: { data: Data }) => {
 export default memo(Info);
 
 const StyledInfo = styled.div`
-  padding-top: 3rem;
+  padding-top: 2rem;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 3rem;
+  }
 `;
 
 const InfoRateContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
 
-  & > *:first-child {
-    grid-area: 1 / 1 / 2 / 3;
+  & > * {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 3rem;
+  }
+
+  @media screen and (min-width: 1440px) {
+    & > *:not(:first-child) {
+      width: calc(50% - 30px / 2);
+    }
   }
 `;

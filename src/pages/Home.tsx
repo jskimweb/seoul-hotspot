@@ -27,7 +27,15 @@ const Home = ({
 export default Home;
 
 const Body = styled.div`
-  width: 116rem;
   margin: 0 auto;
-  padding: 3rem 0;
+  padding: 2rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 3rem;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 116rem;
+    padding: 3rem 0;
+  }
 `;

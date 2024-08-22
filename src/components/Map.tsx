@@ -34,7 +34,15 @@ const Map = ({
 export default memo(Map);
 
 const StyledMap = styled.div`
-  height: 50rem;
+  height: 25rem;
+
+  @media screen and (min-width: 768px) {
+    height: 35rem;
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 50rem;
+  }
 `;
 
 const MapObject = styled.div`

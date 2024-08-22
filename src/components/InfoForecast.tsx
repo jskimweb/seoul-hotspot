@@ -24,7 +24,7 @@ const InfoForecast = ({ data }: { data: Data }) => {
               <Level className={levelClassName(item.FCST_CONGEST_LVL)}>
                 {item.FCST_CONGEST_LVL}
               </Level>
-              <span>{`${item.FCST_PPLTN_MIN} ~ ${item.FCST_PPLTN_MAX} 명`}</span>
+              <Number>{`${item.FCST_PPLTN_MIN} ~ ${item.FCST_PPLTN_MAX} 명`}</Number>
             </Item>
           );
         })}
@@ -37,8 +37,16 @@ export default InfoForecast;
 
 const ItemWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: 3rem;
+  gap: 2rem;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    gap: 3rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
 `;
 
 const Item = styled.div`
@@ -54,6 +62,10 @@ const Item = styled.div`
 const Time = styled.span`
   font-size: 1.3rem;
   color: gray;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Level = styled.span`
@@ -74,5 +86,13 @@ const Level = styled.span`
 
   &.level-4 {
     color: #ea0800;
+  }
+`;
+
+const Number = styled.span`
+  font-size: 1.3rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
