@@ -57,31 +57,31 @@ export default memo(Header);
 const StyledHeader = styled.header`
   display: flex;
   align-items: center;
-  height: 60px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 6rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1160px;
+  width: 116rem;
   margin: 0 auto;
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: bold;
 `;
 
 const Button = styled.button`
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 3px;
-  border-radius: 5px;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);

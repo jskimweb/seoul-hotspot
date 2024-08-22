@@ -24,8 +24,8 @@ const InfoCongest = ({ data }: { data: Data }) => {
       <Time>{`${PPLTN_TIME} 기준`}</Time>
       <Spot>{`${AREA_NM}`}</Spot>
       <Level className={levelClassName}>{AREA_CONGEST_LVL}</Level>
-      <span>{`${AREA_PPLTN_MIN} ~ ${AREA_PPLTN_MAX} 명`}</span>
-      <span>{`"${AREA_CONGEST_MSG}"`}</span>
+      <Number>{`${AREA_PPLTN_MIN} ~ ${AREA_PPLTN_MAX} 명`}</Number>
+      <Message>{`"${AREA_CONGEST_MSG}"`}</Message>
     </StyledInfoCongest>
   );
 };
@@ -37,43 +37,43 @@ const StyledInfoCongest = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 30px;
-  padding: 20px 30px 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 2rem 3rem 3rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 
   &.level-1 {
-    border: 2px solid #28c21a;
+    border: 0.2rem solid #28c21a;
   }
 
   &.level-2 {
-    border: 2px solid #f9ca44;
+    border: 0.2rem solid #f9ca44;
   }
 
   &.level-3 {
-    border: 2px solid #fb7625;
+    border: 0.2rem solid #fb7625;
   }
 
   &.level-4 {
-    border: 2px solid #ea0800;
+    border: 0.2rem solid #ea0800;
   }
 `;
 
 const Time = styled.span`
   position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 13px;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.3rem;
   color: gray;
 `;
 
 const Spot = styled.h4`
-  font-size: 18px;
+  font-size: 1.8rem;
 `;
 
 const Level = styled.span`
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: bold;
 
   &.level-1 {
@@ -91,4 +91,12 @@ const Level = styled.span`
   &.level-4 {
     color: #ea0800;
   }
+`;
+
+const Number = styled.span`
+  font-size: 1.6rem;
+`;
+
+const Message = styled.span`
+  font-size: 1.6rem;
 `;

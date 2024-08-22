@@ -67,9 +67,9 @@ const Search = ({ setSpot }: { setSpot: (spot: string) => void }) => {
 export default Search;
 
 const Body = styled.div`
-  width: 1160px;
+  width: 116rem;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 2rem 0;
 `;
 
 const InputWrapper = styled.div`
@@ -77,32 +77,32 @@ const InputWrapper = styled.div`
 `;
 
 const Input = styled.input`
-  width: calc(100% - 40px);
-  height: 60px;
+  width: calc(100% - 4rem);
+  height: 6rem;
   outline: none;
   border: none;
-  border-bottom: 1px solid lightgray;
-  padding: 0 20px;
-  margin-bottom: 20px;
-  font-size: 20px;
+  border-bottom: 0.1rem solid lightgray;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
 
   &:focus {
-    border-bottom: 1px solid black;
+    border-bottom: 0.1rem solid black;
   }
 `;
 
 const RemoveButton = styled.button`
   position: absolute;
-  top: 30px;
-  right: 20px;
+  top: 3rem;
+  right: 2rem;
   transform: translateY(-50%);
-  width: 26px;
-  height: 26px;
+  width: 2.6rem;
+  height: 2.6rem;
   background: none;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  padding: 3px;
+  padding: 0.3rem;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
@@ -112,16 +112,16 @@ const RemoveButton = styled.button`
 const ItemWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-  font-size: 20px;
+  gap: 2rem;
+  padding: 2rem;
+  font-size: 2rem;
 `;
 
 const Item = styled.div`
-  padding: 10px;
-  font-size: 20px;
+  padding: 1rem;
+  font-size: 2rem;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 0.5rem;
 
   &:hover {
     background-color: #f0f0f0;

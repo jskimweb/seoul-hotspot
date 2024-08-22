@@ -1,6 +1,6 @@
 import type { Data } from "../types";
 import styled from "styled-components";
-import InfoContainer from './InfoContainer';
+import InfoContainer from "./InfoContainer";
 
 const InfoForecast = ({ data }: { data: Data }) => {
   const { FCST_PPLTN } = data;
@@ -37,27 +37,27 @@ export default InfoForecast;
 
 const ItemWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 3rem;
 `;
 
 const Item = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 `;
 
 const Time = styled.span`
-  font-size: 13px;
+  font-size: 1.3rem;
   color: gray;
 `;
 
 const Level = styled.span`
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
 
   &.level-1 {

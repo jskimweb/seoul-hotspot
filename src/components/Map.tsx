@@ -34,11 +34,11 @@ const Map = ({
 export default memo(Map);
 
 const StyledMap = styled.div`
-  height: 500px;
+  height: 50rem;
 `;
 
 const MapObject = styled.div`
   height: 100%;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 `;

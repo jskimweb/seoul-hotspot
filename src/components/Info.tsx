@@ -46,13 +46,13 @@ const Info = ({ data }: { data: Data }) => {
 export default memo(Info);
 
 const StyledInfo = styled.div`
-  padding-top: 30px;
+  padding-top: 3rem;
 `;
 
 const InfoRateContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 3rem;
 
   & > *:first-child {
     grid-area: 1 / 1 / 2 / 3;
