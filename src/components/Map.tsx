@@ -7,11 +7,9 @@ import { memo } from "react";
 const Map = ({
   spot,
   setSpot,
-  fetchData,
 }: {
   spot: string;
   setSpot: (spot: string) => void;
-  fetchData: (spot: string) => Promise<void>;
 }) => {
   const { panTo } = useKakaoMap({ spot, setSpot });
 
@@ -19,10 +17,9 @@ const Map = ({
     const hotspot = HOTSPOTS.find((hotspot) => spot === hotspot.name);
 
     if (hotspot) {
-      fetchData(hotspot.name);
       panTo(hotspot.latlng);
     }
-  }, [spot, fetchData, panTo]);
+  }, [spot, panTo]);
 
   return (
     <StyledMap>

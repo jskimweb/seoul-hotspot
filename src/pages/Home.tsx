@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Map from "../components/Map";
 import Info from "../components/Info";
-import { useFetchData } from "../hooks/useFetchData";
+import { useSeoulPopulation } from "../hooks/useSeoulPopulation";
 import styled from "styled-components";
 
 const Home = ({
@@ -11,13 +11,13 @@ const Home = ({
   spot: string;
   setSpot: (spot: string) => void;
 }) => {
-  const { data, fetchData } = useFetchData();
+  const { data } = useSeoulPopulation(spot);
 
   return (
     <>
       <Header />
       <Body>
-        <Map spot={spot} setSpot={setSpot} fetchData={fetchData} />
+        <Map spot={spot} setSpot={setSpot} />
         {data && <Info data={data} />}
       </Body>
     </>
