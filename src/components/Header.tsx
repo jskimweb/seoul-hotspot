@@ -46,7 +46,7 @@ const Header = () => {
     <StyledHeader>
       <Container>
         <LogoAndTitle>
-          <Logo src="/public/logo.png" alt="logo" />
+          <Logo src="/logo.png" alt="logo" />
           <Title>서울 핫스팟</Title>
         </LogoAndTitle>
         <Button onClick={onClickButton}>{buttonIcon}</Button>
