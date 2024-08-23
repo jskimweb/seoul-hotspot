@@ -70,7 +70,11 @@ const Body = styled.div`
   margin: 0 auto;
   padding: 2rem;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
+    padding: 3rem;
+  }
+
+  @media screen and (min-width: 1440px) {
     width: 116rem;
     padding: 3rem 0;
   }
@@ -78,10 +82,14 @@ const Body = styled.div`
 
 const InputWrapper = styled.div`
   position: relative;
+
+  @media screen and (min-width: 1024px) {
+    padding: 0 2rem;
+  }
 `;
 
 const Input = styled.input`
-  width: calc(100% - 2rem);
+  width: 100%;
   height: 6rem;
   outline: none;
   border: none;
@@ -95,8 +103,6 @@ const Input = styled.input`
   }
 
   @media screen and (min-width: 1024px) {
-    width: calc(100% - 4rem);
-    padding: 0 2rem;
     margin-bottom: 2rem;
   }
 `;
