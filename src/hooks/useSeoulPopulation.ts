@@ -15,11 +15,11 @@ const fetchSeoulPopulation = async (spot: string) => {
 };
 
 export const useSeoulPopulation = (spot: string) => {
-  const { data } = useQuery<Data>({
+  const { data, isLoading } = useQuery<Data>({
     queryKey: ["seoulPopulation", spot],
     queryFn: () => fetchSeoulPopulation(spot),
     enabled: !!spot,
   });
 
-  return { data };
+  return { data, isLoading };
 };

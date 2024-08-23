@@ -3,6 +3,7 @@ import Map from "../components/Map";
 import Info from "../components/Info";
 import { useSeoulPopulation } from "../hooks/useSeoulPopulation";
 import styled from "styled-components";
+import InfoSkeleton from "../components/InfoSkeleton";
 
 const Home = ({
   spot,
@@ -11,14 +12,15 @@ const Home = ({
   spot: string;
   setSpot: (spot: string) => void;
 }) => {
-  const { data } = useSeoulPopulation(spot);
+  const { data, isLoading } = useSeoulPopulation(spot);
 
   return (
     <>
       <Header />
       <Body>
         <Map spot={spot} setSpot={setSpot} />
-        {data && <Info data={data} />}
+        {isLoading && <InfoSkeleton />}
+        {!isLoading && data && <Info data={data} />}
       </Body>
     </>
   );
