@@ -82,9 +82,10 @@ const Body = styled.div`
 
 const InputWrapper = styled.div`
   position: relative;
+  margin-bottom: 1rem;
 
   @media screen and (min-width: 1024px) {
-    padding: 0 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -95,15 +96,10 @@ const Input = styled.input`
   border: none;
   border-bottom: 0.1rem solid lightgray;
   padding: 0 1rem;
-  margin-bottom: 1rem;
   font-size: 2rem;
 
   &:focus {
     border-bottom: 0.1rem solid black;
-  }
-
-  @media screen and (min-width: 1024px) {
-    margin-bottom: 2rem;
   }
 `;
 
@@ -141,12 +137,10 @@ const ItemWrapper = styled.div`
 
   @media screen and (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
-    padding: 2rem;
   }
 
   @media screen and (min-width: 1440px) {
     grid-template-columns: repeat(4, 1fr);
-    padding: 2rem;
   }
 `;
 
