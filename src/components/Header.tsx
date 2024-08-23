@@ -45,7 +45,10 @@ const Header = () => {
   return (
     <StyledHeader>
       <Container>
-        <Title>서울 핫스팟</Title>
+        <LogoAndTitle>
+          <Logo src="/public/logo.png" alt="logo" />
+          <Title>서울 핫스팟</Title>
+        </LogoAndTitle>
         <Button onClick={onClickButton}>{buttonIcon}</Button>
       </Container>
     </StyledHeader>
@@ -76,6 +79,16 @@ const Container = styled.div`
   @media screen and (min-width: 1440px) {
     width: 116rem;
   }
+`;
+
+const LogoAndTitle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const Logo = styled.img`
+  height: 3.5rem;
 `;
 
 const Title = styled.h1`
