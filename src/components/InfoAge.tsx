@@ -66,7 +66,7 @@ const InfoAge = ({ data }: { data: string[] }) => {
   }, [data]);
 
   return (
-    <InfoContainer title="연령대별 인구 비율">
+    <InfoContainer title="연령 비율">
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
     </InfoContainer>
   );

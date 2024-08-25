@@ -44,7 +44,7 @@ const InfoGender = ({ data }: { data: Data }) => {
   }, [FEMALE_PPLTN_RATE, MALE_PPLTN_RATE, data]);
 
   return (
-    <InfoContainer title="성별 인구 비율">
+    <InfoContainer title="성별 비율">
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
     </InfoContainer>
   );

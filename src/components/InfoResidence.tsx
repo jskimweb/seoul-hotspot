@@ -41,7 +41,7 @@ const InfoResidence = ({ data }: { data: Data }) => {
   }, [NON_RESNT_PPLTN_RATE, RESNT_PPLTN_RATE, data]);
 
   return (
-    <InfoContainer title="상주/비상주 인구 비율">
+    <InfoContainer title="상주/비상주 비율">
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
     </InfoContainer>
   );

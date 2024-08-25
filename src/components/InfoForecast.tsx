@@ -15,7 +15,7 @@ const InfoForecast = ({ data }: { data: Data }) => {
   };
 
   return (
-    <InfoContainer title="인구 추이 및 전망">
+    <InfoContainer title="예측 혼잡도">
       <ItemWrapper>
         {FCST_PPLTN.map((item) => {
           return (
