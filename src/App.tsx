@@ -4,6 +4,7 @@ import Search from "./pages/Search";
 import { DEFAULT_HOTSPOT } from "./constants";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ function App() {
           />
         </Routes>
       </QueryClientProvider>
+      <Analytics />
     </>
   );
 }
