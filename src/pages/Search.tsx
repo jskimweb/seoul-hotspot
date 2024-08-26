@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { HOTSPOTS } from "../constants/index";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { X } from "lucide-react";
 
 const Search = ({ setSpot }: { setSpot: (spot: string) => void }) => {
   const [keyword, setKeyword] = useState("");
@@ -30,23 +31,11 @@ const Search = ({ setSpot }: { setSpot: (spot: string) => void }) => {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             placeholder="검색어를 입력해주세요."
+            autoFocus
           />
           {keyword && (
             <RemoveButton onClick={initializeKeyword}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
+              <X size={20} />
             </RemoveButton>
           )}
         </InputWrapper>
@@ -108,20 +97,11 @@ const RemoveButton = styled.button`
   top: 3rem;
   right: 1rem;
   transform: translateY(-50%);
-  width: 2.6rem;
-  height: 2.6rem;
-  background: none;
-  border: none;
   border-radius: 50%;
-  cursor: pointer;
   padding: 0.3rem;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
-  }
-
-  @media screen and (min-width: 1024px) {
-    right: 2rem;
   }
 `;
 

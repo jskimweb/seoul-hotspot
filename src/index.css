@@ -17,3 +17,10 @@
 html {
   font-size: 10px;
 }
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0;
+}

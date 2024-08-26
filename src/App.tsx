@@ -5,6 +5,9 @@ import { DEFAULT_HOTSPOT } from "./constants";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Analytics } from "@vercel/analytics/react";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function App() {
   const queryClient = new QueryClient();

@@ -1,5 +1,8 @@
 import type { Data } from "../types";
 import styled from "styled-components";
+import { CircleHelp } from "lucide-react";
+import { useState } from "react";
+import CongestionModal from "./CongestionModal";
 
 const InfoCongest = ({ data }: { data: Data }) => {
   const {
@@ -18,14 +21,28 @@ const InfoCongest = ({ data }: { data: Data }) => {
       : AREA_CONGEST_LVL === "약간 붐빔"
       ? "level-3"
       : "level-4";
+  const [isModalOpened, setIsModalOpened] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpened(true);
+  };
+  const closeModal = () => {
+    setIsModalOpened(false);
+  };
 
   return (
     <StyledInfoCongest className={levelClassName}>
       <Time>{`${PPLTN_TIME} 기준`}</Time>
       <Spot>{`${AREA_NM}`}</Spot>
-      <Level className={levelClassName}>{AREA_CONGEST_LVL}</Level>
+      <LevelWrapper>
+        <Level className={levelClassName}>{AREA_CONGEST_LVL}</Level>
+        <QuestionButton onClick={openModal}>
+          <CircleHelp size={24} />
+        </QuestionButton>
+      </LevelWrapper>
       <Number>{`${AREA_PPLTN_MIN} ~ ${AREA_PPLTN_MAX} 명`}</Number>
       <Message>{`"${AREA_CONGEST_MSG}"`}</Message>
+      <CongestionModal isModalOpened={isModalOpened} closeModal={closeModal} />
     </StyledInfoCongest>
   );
 };
@@ -88,6 +105,10 @@ const Spot = styled.h4`
   }
 `;
 
+const LevelWrapper = styled.div`
+  position: relative;
+`;
+
 const Level = styled.span`
   font-size: 3rem;
   font-weight: bold;
@@ -113,6 +134,20 @@ const Level = styled.span`
   }
 `;
 
+const QuestionButton = styled.button`
+  position: absolute;
+  right: -3.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+`;
+
 const Number = styled.span`
   font-size: 1.3rem;
 
@@ -124,6 +159,8 @@ const Number = styled.span`
 const Message = styled.span`
   font-size: 1.3rem;
   line-height: 1.5;
+  text-align: center;
+  word-break: keep-all;
 
   @media screen and (min-width: 768px) {
     font-size: 1.6rem;

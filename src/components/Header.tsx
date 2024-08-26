@@ -1,45 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { memo } from "react";
+import { Search, House } from "lucide-react";
 
 const Header = () => {
   const nav = useNavigate();
-
-  const buttonIcon =
-    location.pathname === "/" ? (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.3-4.3" />
-      </svg>
-    ) : (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-        <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      </svg>
-    );
+  const { pathname } = useLocation();
 
   const onClickButton = () => {
-    nav(location.pathname === "/" ? "/search" : "/");
+    nav(pathname === "/" ? "/search" : "/");
   };
 
   return (
@@ -49,7 +18,9 @@ const Header = () => {
           <Logo src="/logo.png" alt="logo" />
           <Title>서울 핫스팟</Title>
         </LogoAndTitle>
-        <Button onClick={onClickButton}>{buttonIcon}</Button>
+        <Button onClick={onClickButton}>
+          {pathname === "/" ? <Search size={24} /> : <House size={24} />}
+        </Button>
       </Container>
     </StyledHeader>
   );
@@ -97,11 +68,6 @@ const Title = styled.h1`
 `;
 
 const Button = styled.button`
-  width: 3rem;
-  height: 3rem;
-  background: none;
-  border: none;
-  cursor: pointer;
   padding: 0.3rem;
   border-radius: 0.5rem;
 
