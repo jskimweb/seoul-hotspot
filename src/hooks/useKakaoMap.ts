@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { HOTSPOTS } from "../constants";
 
 declare global {
@@ -114,15 +114,4 @@ export const useKakaoMap = ({
       initializeMap();
     }
   }, [map, spot, setSpot, markers]);
-
-  const panTo = useCallback(
-    (latlng: number[]) => {
-      if (map) {
-        map.panTo(new window.kakao.maps.LatLng(latlng[0], latlng[1]));
-      }
-    },
-    [map]
-  );
-
-  return { panTo };
 };
