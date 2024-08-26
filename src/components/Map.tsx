@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import { useKakaoMap } from "../hooks/useKakaoMap";
-import { HOTSPOTS } from "../constants";
 import styled from "styled-components";
 import { memo } from "react";
 
@@ -11,15 +9,7 @@ const Map = ({
   spot: string;
   setSpot: (spot: string) => void;
 }) => {
-  const { panTo } = useKakaoMap({ spot, setSpot });
-
-  useEffect(() => {
-    const hotspot = HOTSPOTS.find((hotspot) => spot === hotspot.name);
-
-    if (hotspot) {
-      panTo(hotspot.latlng);
-    }
-  }, [spot, panTo]);
+  useKakaoMap({ spot, setSpot });
 
   return (
     <StyledMap>

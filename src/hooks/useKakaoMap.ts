@@ -16,9 +16,10 @@ export const useKakaoMap = ({
   setSpot: (spot: string) => void;
 }) => {
   const [map, setMap] = useState<any>();
+  const [markers, setMarkers] = useState<any[]>([]);
 
   useEffect(() => {
-    const loadKakaoMapScript = () => {
+    const _loadKakaoMapScript = () => {
       return new Promise<void>((resolve, reject) => {
         const script = document.createElement("script");
 
@@ -40,9 +41,46 @@ export const useKakaoMap = ({
       });
     };
 
+    const _initializeMarkers = (kakaoMap: any) => {
+      const markerImage = new window.kakao.maps.MarkerImage(
+        "/logo.png",
+        new window.kakao.maps.Size(31, 50)
+      );
+      const newMarkers = HOTSPOTS.map(({ name, latlng }) => {
+        const marker = new window.kakao.maps.Marker({
+          map: kakaoMap,
+          position: new window.kakao.maps.LatLng(latlng[0], latlng[1]),
+          title: name,
+          ...(name === spot && { image: markerImage }),
+        });
+
+        window.kakao.maps.event.addListener(marker, "click", () => {
+          setSpot(name);
+          kakaoMap.panTo(new window.kakao.maps.LatLng(latlng[0], latlng[1]));
+        });
+
+        marker.setMap(kakaoMap);
+
+        return marker;
+      });
+
+      setMarkers(newMarkers);
+    };
+
+    const updateMarkers = () => {
+      const markerImage = new window.kakao.maps.MarkerImage(
+        "/logo.png",
+        new window.kakao.maps.Size(31, 50)
+      );
+
+      for (const marker of markers) {
+        marker.setImage(marker.getTitle() === spot ? markerImage : null);
+      }
+    };
+
     const initializeMap = async () => {
       try {
-        await loadKakaoMapScript();
+        await _loadKakaoMapScript();
 
         const mapRef = document.getElementById("map");
 
@@ -59,21 +97,7 @@ export const useKakaoMap = ({
         };
         const kakaoMap = new window.kakao.maps.Map(mapRef, options);
 
-        // 마커 및 마커 클릭 이벤트 추가
-        for (const { name, latlng } of HOTSPOTS) {
-          const marker = new window.kakao.maps.Marker({
-            map: kakaoMap,
-            position: new window.kakao.maps.LatLng(latlng[0], latlng[1]),
-            title: name,
-          });
-
-          window.kakao.maps.event.addListener(marker, "click", () => {
-            setSpot(name);
-            kakaoMap.panTo(new window.kakao.maps.LatLng(latlng[0], latlng[1]));
-          });
-
-          marker.setMap(kakaoMap);
-        }
+        _initializeMarkers(kakaoMap);
 
         // 도로 교통정보 추가
         kakaoMap.addOverlayMapTypeId(window.kakao.maps.MapTypeId.TRAFFIC);
@@ -84,17 +108,21 @@ export const useKakaoMap = ({
       }
     };
 
-    if (!map) {
+    if (map) {
+      updateMarkers();
+    } else {
       initializeMap();
     }
-  }, [map, setSpot]);
+  }, [map, spot, setSpot, markers]);
 
-  const panTo = useCallback((latlng: number[]) => {
-    if (map) {
-      map.panTo(new window.kakao.maps.LatLng(latlng[0], latlng[1]));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const panTo = useCallback(
+    (latlng: number[]) => {
+      if (map) {
+        map.panTo(new window.kakao.maps.LatLng(latlng[0], latlng[1]));
+      }
+    },
+    [map]
+  );
 
   return { panTo };
 };
