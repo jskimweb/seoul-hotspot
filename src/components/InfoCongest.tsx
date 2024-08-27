@@ -3,8 +3,11 @@ import styled from "styled-components";
 import { CircleHelp } from "lucide-react";
 import { useState } from "react";
 import CongestionModal from "./CongestionModal";
+import { CONGESTIONS } from "../constants";
 
 const InfoCongest = ({ data }: { data: Data }) => {
+  const [isModalOpened, setIsModalOpened] = useState(false);
+
   const {
     AREA_NM,
     AREA_CONGEST_LVL,
@@ -13,15 +16,10 @@ const InfoCongest = ({ data }: { data: Data }) => {
     AREA_PPLTN_MIN,
     PPLTN_TIME,
   } = data;
-  const levelClassName =
-    AREA_CONGEST_LVL === "여유"
-      ? "level-1"
-      : AREA_CONGEST_LVL === "보통"
-      ? "level-2"
-      : AREA_CONGEST_LVL === "약간 붐빔"
-      ? "level-3"
-      : "level-4";
-  const [isModalOpened, setIsModalOpened] = useState(false);
+
+  const color = CONGESTIONS.find(
+    ({ level }) => level === AREA_CONGEST_LVL
+  )?.color;
 
   const openModal = () => {
     setIsModalOpened(true);
@@ -31,11 +29,11 @@ const InfoCongest = ({ data }: { data: Data }) => {
   };
 
   return (
-    <StyledInfoCongest className={levelClassName}>
+    <StyledInfoCongest color={color}>
       <Time>{`${PPLTN_TIME} 기준`}</Time>
       <Spot>{`${AREA_NM}`}</Spot>
       <LevelWrapper>
-        <Level className={levelClassName}>{AREA_CONGEST_LVL}</Level>
+        <Level color={color}>{AREA_CONGEST_LVL}</Level>
         <QuestionButton onClick={openModal}>
           <CircleHelp size={24} />
         </QuestionButton>
@@ -59,22 +57,7 @@ const StyledInfoCongest = styled.div`
   padding: 3rem 2rem 2rem;
   border-radius: 1.5rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-
-  &.level-1 {
-    border: 0.2rem solid #28c21a;
-  }
-
-  &.level-2 {
-    border: 0.2rem solid #f9ca44;
-  }
-
-  &.level-3 {
-    border: 0.2rem solid #fb7625;
-  }
-
-  &.level-4 {
-    border: 0.2rem solid #ea0800;
-  }
+  border: 0.2rem solid ${({ color }) => color};
 
   @media screen and (min-width: 768px) {
     margin-bottom: 3rem;
@@ -112,22 +95,7 @@ const LevelWrapper = styled.div`
 const Level = styled.span`
   font-size: 3rem;
   font-weight: bold;
-
-  &.level-1 {
-    color: #28c21a;
-  }
-
-  &.level-2 {
-    color: #f9ca44;
-  }
-
-  &.level-3 {
-    color: #fb7625;
-  }
-
-  &.level-4 {
-    color: #ea0800;
-  }
+  color: ${({ color }) => color};
 
   @media screen and (min-width: 768px) {
     font-size: 4rem;
