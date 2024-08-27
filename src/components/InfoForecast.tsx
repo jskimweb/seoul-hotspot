@@ -4,10 +4,10 @@ import InfoContainer from "./InfoContainer";
 import { CONGESTIONS } from "../constants/index";
 
 const InfoForecast = ({ data }: { data: Data }) => {
-  const { FCST_PPLTN } = data;
+  const { FCST_PPLTN, PPLTN_TIME } = data;
 
   return (
-    <InfoContainer title="예측 혼잡도">
+    <InfoContainer title="예측 혼잡도" time={PPLTN_TIME}>
       <ItemWrapper>
         {FCST_PPLTN.map((item) => {
           return (

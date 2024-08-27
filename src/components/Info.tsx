@@ -17,6 +17,7 @@ const Info = ({ data }: { data: Data }) => {
     PPLTN_RATE_50,
     PPLTN_RATE_60,
     PPLTN_RATE_70,
+    PPLTN_TIME,
   } = data;
 
   return (
@@ -36,6 +37,7 @@ const Info = ({ data }: { data: Data }) => {
             PPLTN_RATE_60,
             PPLTN_RATE_70,
           ]}
+          time={PPLTN_TIME}
         />
         <InfoResidence data={data} />
       </InfoRateContainer>

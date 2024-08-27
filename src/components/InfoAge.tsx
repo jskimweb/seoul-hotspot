@@ -2,7 +2,7 @@ import { type LegacyRef, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import InfoContainer from "./InfoContainer";
 
-const InfoAge = ({ data }: { data: string[] }) => {
+const InfoAge = ({ data, time }: { data: string[]; time: string }) => {
   const chartRef = useRef<HTMLCanvasElement>();
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const InfoAge = ({ data }: { data: string[] }) => {
   }, [data]);
 
   return (
-    <InfoContainer title="연령 비율">
+    <InfoContainer title="연령 비율" time={time}>
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
     </InfoContainer>
   );

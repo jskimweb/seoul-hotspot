@@ -4,7 +4,7 @@ import type { Data } from "../types";
 import InfoContainer from "./InfoContainer";
 
 const InfoResidence = ({ data }: { data: Data }) => {
-  const { NON_RESNT_PPLTN_RATE, RESNT_PPLTN_RATE } = data;
+  const { NON_RESNT_PPLTN_RATE, RESNT_PPLTN_RATE, PPLTN_TIME } = data;
 
   const chartRef = useRef<HTMLCanvasElement>();
 
@@ -41,7 +41,7 @@ const InfoResidence = ({ data }: { data: Data }) => {
   }, [NON_RESNT_PPLTN_RATE, RESNT_PPLTN_RATE, data]);
 
   return (
-    <InfoContainer title="상주/비상주 비율">
+    <InfoContainer title="상주/비상주 비율" time={PPLTN_TIME}>
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
     </InfoContainer>
   );

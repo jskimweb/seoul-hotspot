@@ -4,7 +4,7 @@ import type { Data } from "../types";
 import InfoContainer from "./InfoContainer";
 
 const InfoGender = ({ data }: { data: Data }) => {
-  const { FEMALE_PPLTN_RATE, MALE_PPLTN_RATE } = data;
+  const { FEMALE_PPLTN_RATE, MALE_PPLTN_RATE, PPLTN_TIME } = data;
 
   const chartRef = useRef<HTMLCanvasElement>();
 
@@ -44,7 +44,7 @@ const InfoGender = ({ data }: { data: Data }) => {
   }, [FEMALE_PPLTN_RATE, MALE_PPLTN_RATE, data]);
 
   return (
-    <InfoContainer title="성별 비율">
+    <InfoContainer title="성별 비율" time={PPLTN_TIME}>
       <canvas ref={chartRef as LegacyRef<HTMLCanvasElement> | undefined} />
     </InfoContainer>
   );

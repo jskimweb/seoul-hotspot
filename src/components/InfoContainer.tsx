@@ -3,13 +3,18 @@ import styled from "styled-components";
 const InfoContainer = ({
   children,
   title,
+  time,
 }: {
   children: React.ReactNode;
   title: string;
+  time: string;
 }) => {
   return (
     <StyledInfoContainer>
-      <Title>{title}</Title>
+      <TitleAndTime>
+        <Title>{title}</Title>
+        <Time>{`${time} 기준`}</Time>
+      </TitleAndTime>
       {children}
     </StyledInfoContainer>
   );
@@ -27,12 +32,28 @@ const StyledInfoContainer = styled.div`
   }
 `;
 
+const TitleAndTime = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+`;
+
 const Title = styled.h4`
   font-size: 1.6rem;
   font-weight: bold;
-  margin-bottom: 2rem;
 
   @media screen and (min-width: 768px) {
     font-size: 2rem;
+  }
+`;
+
+const Time = styled.span`
+  font-size: 1rem;
+  color: gray;
+
+  @media screen and (min-width: 768px) {
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.3rem;
   }
 `;
