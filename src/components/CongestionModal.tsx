@@ -34,6 +34,7 @@ const CongestionModal = ({
       display: "flex",
       flexDirection: "column" as CSSProperties["flexDirection"],
       width: windowWidth < 768 ? "90vw" : "50vw",
+      maxWidth: "100rem",
       height: "fit-content",
       left: "50%",
       top: "50%",

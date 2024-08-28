@@ -29,6 +29,7 @@ const Header = () => {
 export default memo(Header);
 
 const StyledHeader = styled.header`
+  position: sticky;
   display: flex;
   align-items: center;
   height: 6rem;

@@ -1,4 +1,5 @@
-import Header from "../components/Header";
+import Header from "../components/layouts/Header";
+import Body from "../components/layouts/Body";
 import styled from "styled-components";
 import { HOTSPOTS } from "../constants/index";
 import { useState } from "react";
@@ -54,20 +55,6 @@ const Search = ({ setSpot }: { setSpot: (spot: string) => void }) => {
 };
 
 export default Search;
-
-const Body = styled.div`
-  margin: 0 auto;
-  padding: 2rem;
-
-  @media screen and (min-width: 768px) {
-    padding: 3rem;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 116rem;
-    padding: 3rem 0;
-  }
-`;
 
 const InputWrapper = styled.div`
   position: relative;
