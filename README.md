@@ -1,4 +1,5 @@
 # 서울 핫스팟
+![image](https://github.com/user-attachments/assets/aeb2f259-84b6-4a51-b0c3-24d846e57699)  
 https://seoul-hotspot.vercel.app
 
 ## 소개
