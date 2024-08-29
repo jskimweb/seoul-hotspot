@@ -1,5 +1,4 @@
 # 서울 핫스팟
-
 https://seoul-hotspot.vercel.app
 
 ## 소개
@@ -26,3 +25,8 @@ https://seoul-hotspot.vercel.app
 - **Charting**: Chart.js
 - **Deployment**: Vercel
 - **CSS** : Styled Components
+
+## 스크린샷
+| '/' | '/search' |
+| -- | -- |
+| ![seoul-hotspot vercel app_](https://github.com/user-attachments/assets/6802298a-428b-487e-ae7b-4b38133e4c75) | ![seoul-hotspot vercel app_ (1)](https://github.com/user-attachments/assets/65a49930-320f-4197-aa8d-ee018545a763) |
