@@ -1,5 +1,4 @@
-import Header from "../components/layouts/Header";
-import Body from "../components/layouts/Body";
+import GlobalLayout from "../components/GlobalLayout";
 import styled from "styled-components";
 import { HOTSPOTS } from "../constants/index";
 import { useState } from "react";
@@ -24,33 +23,30 @@ const Search = ({ setSpot }: { setSpot: (spot: string) => void }) => {
   };
 
   return (
-    <>
-      <Header />
-      <Body>
-        <InputWrapper>
-          <Input
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            placeholder="검색어를 입력해주세요."
-            autoFocus
-          />
-          {keyword && (
-            <RemoveButton onClick={initializeKeyword}>
-              <X size={20} />
-            </RemoveButton>
-          )}
-        </InputWrapper>
-        <ItemWrapper>
-          {filteredHotspots.map((spot) => {
-            return (
-              <Item key={spot.name} onClick={() => onClickItem(spot.name)}>
-                {spot.name}
-              </Item>
-            );
-          })}
-        </ItemWrapper>
-      </Body>
-    </>
+    <GlobalLayout>
+      <InputWrapper>
+        <Input
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          placeholder="검색어를 입력해주세요."
+          autoFocus
+        />
+        {keyword && (
+          <RemoveButton onClick={initializeKeyword}>
+            <X size={20} />
+          </RemoveButton>
+        )}
+      </InputWrapper>
+      <ItemWrapper>
+        {filteredHotspots.map((spot) => {
+          return (
+            <Item key={spot.name} onClick={() => onClickItem(spot.name)}>
+              {spot.name}
+            </Item>
+          );
+        })}
+      </ItemWrapper>
+    </GlobalLayout>
   );
 };
 

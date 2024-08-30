@@ -1,5 +1,4 @@
-import Header from "../components/layouts/Header";
-import Body from "../components/layouts/Body";
+import GlobalLayout from "../components/GlobalLayout";
 import Map from "../components/Map";
 import Info from "../components/Info";
 import { useSeoulPopulation } from "../hooks/useSeoulPopulation";
@@ -15,14 +14,11 @@ const Home = ({
   const { data, isLoading } = useSeoulPopulation(spot);
 
   return (
-    <>
-      <Header />
-      <Body>
-        <Map spot={spot} setSpot={setSpot} />
-        {isLoading && <InfoSkeleton />}
-        {!isLoading && data && <Info data={data} />}
-      </Body>
-    </>
+    <GlobalLayout>
+      <Map spot={spot} setSpot={setSpot} />
+      {isLoading && <InfoSkeleton />}
+      {!isLoading && data && <Info data={data} />}
+    </GlobalLayout>
   );
 };
 

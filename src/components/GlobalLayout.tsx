@@ -1,9 +1,9 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { memo } from "react";
 import { Search, House } from "lucide-react";
+import { type ReactNode } from "react";
 
-const Header = () => {
+export default function GlobalLayout({ children }: { children: ReactNode }) {
   const nav = useNavigate();
   const { pathname } = useLocation();
 
@@ -12,21 +12,22 @@ const Header = () => {
   };
 
   return (
-    <StyledHeader>
-      <Container>
-        <LogoAndTitle>
-          <Logo src="/logo.png" alt="logo" />
-          <Title>서울 핫스팟</Title>
-        </LogoAndTitle>
-        <Button onClick={onClickButton}>
-          {pathname === "/" ? <Search size={24} /> : <House size={24} />}
-        </Button>
-      </Container>
-    </StyledHeader>
+    <>
+      <StyledHeader>
+        <Container>
+          <LogoAndTitle>
+            <Logo src="/logo.png" alt="logo" />
+            <Title>서울 핫스팟</Title>
+          </LogoAndTitle>
+          <Button onClick={onClickButton}>
+            {pathname === "/" ? <Search size={24} /> : <House size={24} />}
+          </Button>
+        </Container>
+      </StyledHeader>
+      <StyledMain>{children}</StyledMain>
+    </>
   );
-};
-
-export default memo(Header);
+}
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -74,5 +75,19 @@ const Button = styled.button`
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const StyledMain = styled.div`
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 3rem;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 116rem;
+    padding: 3rem 0;
   }
 `;
